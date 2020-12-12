@@ -35,7 +35,7 @@ def api():
     res = requests.request("GET", url, params = paramss)
     if res.status_code == 200:
         body = res.json()
-        return render_template('index.html', records = body[0])
+        return render_template('index.html', records = body)
     else:
         return "No ha funcionado"
 
