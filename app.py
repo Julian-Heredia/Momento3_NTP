@@ -1,6 +1,7 @@
-from flask import Flask, render_template, url_for, redirect
+from flask import request, Flask, render_template, url_for, redirect
 from flask.wrappers import Response
 import requests
+
 app = Flask(__name__)
 
 app.secret_key = "67q5r9s7rtf3"
@@ -27,26 +28,16 @@ def show_user_profile(username):
 def medical():
     return render_template('medical.html')
 
-@app.route('/api')
+@app.route('/beer')
 def api():
-    url = 'https://chroniclingamerica.loc.gov/'
-    esp_url = 'search/titles/results/'
-    paramss = {'terms':'michigan', 'format':'json'}
-    res = requests.request("GET", url + esp_url, params = paramss)
+    url = "https://api.punkapi.com/v2/beers"
+    paramss = {'page':'2', 'page_page':'80'}
+    res = requests.request("GET", url, params = paramss)
     if res.status_code == 200:
         body = res.json()
-        return render_template('index.html', records = body["items"])
+        return render_template('index.html', records = body[0])
     else:
-        return "Nooo"
-
-@app.route('/detail/<id>')
-def detail(id):
-    url = 'https://chroniclingamerica.loc.gov/'
-    # falta algo en la url: https://chroniclingamerica.loc.gov/lccn/sn86069873.json
-    esp_url = id + '.json'
-    res = requests.request("GET", url + esp_url)
-    return res.json()
-
+        return "No ha funcionado"
 
 if __name__ == '__main__':
     app.run(debug=True)

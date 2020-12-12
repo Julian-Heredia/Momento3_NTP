@@ -37,22 +37,22 @@
             <table class="table">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">Title</th>
-                  <th scope="col">Url</th>
-                  <th scope="col">Publisher</th>
-                  <th scope="col">View</th>
+                  <th scope="col">id</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Tagline</th>
+                  <th scope="col">First Brewed</th>
+                  <th scope="col">Description</th>
                 </tr>
               </thead>
               <tbody>
                 {% if records %}
                 {% for row in records %}
                 <tr>
-                  <th scope="row"> {{ row["lccn"] }} </th>
-                  <td>{{ row["title"] }}</td>
-                  <td><a href="{{ row['url'] }}" target="_blank" rel="noopener noreferrer">{{ row["url"] }}</a></td>
-                  <td>{{ row["publisher"] }}</td>
-                  <td><a href="/detail/{{ row['lccn'] }}">View detail</a></td>
+                  <th scope="row"> {{ row["id"] }} </th>
+                  <td>{{ row["name"] }}</td>
+                  <td>{{ row["tagline"] }}</td>
+                  <td>{{ row["first_brewed"] }}</td>
+                  <td>{{ row["description"] }}</td>
                 </tr>
                 {% endfor %}
                 {% endif %}
