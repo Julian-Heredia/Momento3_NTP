@@ -12,16 +12,13 @@ def validar():
 
 
 @app.route('/')
-def hello_world():
+def home():
     return render_template('index.html')
 
 
-@app.route('/contact')
-def contact():
-    if validar() == False:
-        return redirect(url_for('medical'))
-    else:
-        return 'Contact form'
+@app.route('/index')
+def index():
+        return render_template('index.html')
 
 
 @app.route('/user/<username>', methods=['GET'])
@@ -41,7 +38,7 @@ def api():
     res = requests.request("GET", url, params=paramss)
     if res.status_code == 200:
         body = res.json()
-        return render_template('index.html', records=body)
+        return render_template('beers.html', records=body)
     else:
         return "No ha funcionado"
 
