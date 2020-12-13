@@ -20,17 +20,6 @@ def home():
 def index():
         return render_template('index.html')
 
-
-@app.route('/user/<username>', methods=['GET'])
-def show_user_profile(username):
-    return render_template('index.html', name=username)
-
-
-@app.route('/medical')
-def medical():
-    return render_template('medical.html')
-
-
 @app.route('/beers')
 def api():
     url = "https://api.punkapi.com/v2/beers"
