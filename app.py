@@ -21,10 +21,15 @@ def home():
 def index():
         return render_template('index.html')
 
+
+@app.route('/credits')
+def credits():
+        return render_template('credits.html')
+
 @app.route('/beers')
 def api():
     url = "https://api.punkapi.com/v2/beers"
-    paramss = {'page': '2', 'page_page': '80'}
+    paramss = {'page': '1', 'page_page': '80'}
     res = requests.request("GET", url, params=paramss)
     if res.status_code == 200:
         body = res.json()
