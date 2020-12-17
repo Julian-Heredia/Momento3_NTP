@@ -1,5 +1,6 @@
 from flask import request, Flask, render_template, url_for, redirect
 from flask.wrappers import Response
+from api.requests import RequestApi
 import requests
 
 app = Flask(__name__)
@@ -36,18 +37,10 @@ def api():
     else:
         return "No ha funcionado"
 
-@app.route('/beer/<id>')
-def beer(id):
-    url = 'https://api.punkapi.com/v2/beers/'
-    paramss = id
-    res = requests.request("GET", url, params = paramss)
-    if res.status_code == 200:
-        body = res.json()
-        body_list = body[int(id)]
-        body_string = str(body_list)
-        return body_string
-    else:
-        return "No ha funcionado"
+@app.route('/view/<id>')
+def view(id):
+    res = RequestApi.get_oneBeer(id)
+    return render_template('view.html', record = res)
 
 
 if __name__ == '__main__':
