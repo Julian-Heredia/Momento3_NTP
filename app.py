@@ -19,12 +19,8 @@ def home():
 
 @app.route('/index')
 def index():
-        return render_template('index.html')
+    return render_template('index.html')
 
-
-@app.route('/credits')
-def credits():
-        return render_template('credits.html')
 
 @app.route('/beers')
 def api():
@@ -37,10 +33,16 @@ def api():
     else:
         return "No ha funcionado"
 
+
 @app.route('/view/<id>')
 def view(id):
     res = RequestApi.get_oneBeer(id)
-    return render_template('view.html', record = res)
+    return render_template('view.html', record=res)
+
+
+@app.route('/credits')
+def credits():
+    return render_template('credits.html')
 
 
 if __name__ == '__main__':

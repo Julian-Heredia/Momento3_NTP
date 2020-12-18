@@ -24,7 +24,7 @@
             <img src="">
             <th scope="row"> {{ row["id"] }} </th>
             <td>{{ row["name"] }}</td>
-            <td><img src="{{ row['image_url'] }}" width="120" height="180"></td>
+            <td><img src="{{ row['image_url'] }}" width="120" height="200"></td>
             <td>{{ row["first_brewed"] }}</td>
             <td>{{ row["description"] }}</td>
             <td>{{ row["abv"] }}</td>
@@ -38,5 +38,7 @@
       <a href="/beers" class="btn btn-primary mb-4">Go Back</a>
     </div>
   </div>
+
+  <div class="row" style="margin-top: 260px;"></div>
 
 {% endblock %}
