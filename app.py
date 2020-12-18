@@ -7,7 +7,6 @@ app = Flask(__name__)
 
 app.secret_key = "67q5r9s7rtf3"
 
-
 def validar():
     return True
 
@@ -47,3 +46,4 @@ def credits():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
